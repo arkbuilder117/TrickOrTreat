@@ -1,5 +1,8 @@
-// Treat or Tricker class header file
+// Authors: Noah Walker 1001614668
+// Class: CSE 1325 Object-Oriented Programming Fall 2019
+// Assignment: Assignment 6
 
+// TrickOrTreater class header file
 #include <iostream>
 #include <string>
 #include <thread>
@@ -14,30 +17,26 @@
 #ifndef _TOT_H
 #define _TOT_H
 
-
 class TrickOrTreater
 {
-	friend std::ostream& operator<<(std::ostream&, TrickOrTreater&);
+	friend std::ostream &operator<<(std::ostream &, TrickOrTreater &);
 
-	public :
-		TrickOrTreater(std::string, std::vector<House*>);
-		std::string getName();
-		void startThread();
-		void joinThread();
-		void GoTrickOrTreating();
-		void Walk(int);
-		std::string getPath();
-		static int ImDone;
+public:
+	TrickOrTreater(std::string, std::vector<House *>);
+	std::string getName();
+	void startThread();
+	void joinThread();
+	void GoTrickOrTreating();
+	void Walk(int);
+	std::string getPath();
+	static int ImDone;
 
-
-	private :
-		std::string name;
-		std::ostringstream path;
-		std::thread *TOTThreadPtr = nullptr;
-		std::map<std::string,int>Bucket;
-		std::vector<House*>ListOfHouses;
+private:
+	std::string name;
+	std::ostringstream path;
+	std::thread *TOTThreadPtr = nullptr;
+	std::map<std::string, int> Bucket;
+	std::vector<House *> ListOfHouses;
 };
-
-
 
 #endif

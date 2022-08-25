@@ -1,4 +1,8 @@
-//Noah Walker 1001614668
+// Authors: Noah Walker 1001614668
+// Class: CSE 1325 Object-Oriented Programming Fall 2019
+// Assignment: Assignment 6
+
+// ToothBrushHouse class header file
 #include <iostream>
 #include <string>
 #include <map>
@@ -13,10 +17,10 @@
 class ToothbrushHouse : public House
 {
 
-	public :
-		ToothbrushHouse(std::string, std::map<int, std::string>);
-    ~ToothbrushHouse();
-		std::string ringDoorbell(std::ostringstream &);
+public:
+	ToothbrushHouse(std::string, std::map<int, std::string>);
+	~ToothbrushHouse();
+	std::string ringDoorbell(std::ostringstream &);
 };
 
 #endif

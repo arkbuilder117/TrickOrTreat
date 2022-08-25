@@ -1,4 +1,8 @@
-//Noah Walker 1001614668
+// Authors: Noah Walker 1001614668
+// Class: CSE 1325 Object-Oriented Programming Fall 2019
+// Assignment: Assignment 6
+
+// Defining functions in CandyHouse class
 #include <iostream>
 #include <string>
 #include <map>
@@ -8,8 +12,8 @@
 #include <chrono>
 #include "CandyHouse.h"
 
-CandyHouse::CandyHouse(std::string name, std::map<int, std::string>Candy)
-: House{name, Candy}
+CandyHouse::CandyHouse(std::string name, std::map<int, std::string> Candy)
+    : House{name, Candy}
 {
 }
 

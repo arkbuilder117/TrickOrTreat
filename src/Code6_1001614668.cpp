@@ -1,11 +1,14 @@
-// Noah Walker 1001614668
+// Authors: Noah Walker 1001614668
+// Class: CSE 1325 Object-Oriented Programming Fall 2019
+// Assignment: Assignment 6
+
+// IMPORTS
 #include <iostream>
 #include <string>
 #include <sstream>
 #include <fstream>
 #include <vector>
 #include <cstring>
-// #include <bits/stdc++.h>
 #include <map>
 #include <iterator>
 #include <ctime>
@@ -16,17 +19,14 @@
 
 using namespace std;
 
+// Retrives file names from command line parameters.
+// Stores names in functions arguments passed by reference
 void get_command_line_params(int argc, char *argv[], string &tot, string &house, string &candy)
 {
   if (argc < 4)
   {
     throw invalid_argument("Missing command line parameters – - Usage : input^filename output^filename");
   }
-
-  // string input_files[argc - 1];
-  // copy(argv + 1, argv + argc - 1, input_files);
-  // cout << input_files[0];
-  // cout << argv[1];
 
   tot = argv[1];
   house = argv[2];
@@ -54,13 +54,13 @@ int main(int argc, char *argv[])
   ifstream HouseFile(house);
   ifstream CandyFile(candy);
 
+  // Creating a map from contents of CandyFile
   map<int, std::string> CandyRanking;
   char str[100];
   string line;
   char *token;
   string name;
 
-  // Candy map stuff
   if (CandyFile.is_open())
   {
     while (getline(CandyFile, line))
@@ -74,7 +74,8 @@ int main(int argc, char *argv[])
     CandyFile.close();
   }
 
-  // vector of Houses stuff
+  // Creating a vector of pointers to House objects
+  // House objects can either be CandyHouse or ToothBrushHouse
   vector<House *> HouseList;
   ostringstream header;
   int random;
@@ -107,6 +108,7 @@ int main(int argc, char *argv[])
     cout << "The file did not open\n";
   }
 
+  // Creating a vector of TrickOrTreater objects
   vector<TrickOrTreater> TOTs;
   if (TrickOrTreaterFile.is_open())
   {
@@ -116,14 +118,16 @@ int main(int argc, char *argv[])
     }
     TrickOrTreaterFile.close();
   }
+
+  // Starting thread attributes on each TrickOrTreater object
   for (auto &stuff : TOTs)
   {
     stuff.startThread();
   }
 
+  // Printing position of each TrickOrTreater object to the command line
+  // Continues until each TrickOrTreater has finished
   string spaces;
-  string billy;
-
   while (TrickOrTreater::ImDone != TOTs.size())
   {
     for (int k = 0; k < 34; k++)
@@ -143,16 +147,19 @@ int main(int argc, char *argv[])
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
   }
 
-  for (auto &thing : TOTs)
+  // Ending threads and printing contents from each TrickOrTreater object
+  for (auto &TOT : TOTs)
   {
-    thing.joinThread();
+    TOT.joinThread();
   }
-  for (auto &w : TOTs)
+  for (auto &bucket : TOTs)
   {
-    cout << w;
+    cout << bucket;
   }
-  for (auto &it : HouseList)
+
+  // Freeing memory and calling destrutor from each House object in HouseList
+  for (auto &House : HouseList)
   {
-    delete it;
+    delete House;
   }
 }

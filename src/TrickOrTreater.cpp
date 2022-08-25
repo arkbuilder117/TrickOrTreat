@@ -1,4 +1,8 @@
-// Noah Walker 1001614668
+// Authors: Noah Walker 1001614668
+// Class: CSE 1325 Object-Oriented Programming Fall 2019
+// Assignment: Assignment 6
+
+// Defining functions in TrickOrTreater class
 #include <iostream>
 #include <string>
 #include <thread>
